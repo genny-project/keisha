@@ -1,0 +1,13 @@
+**/target/
+/src/main/resources/git.properties
+src/main/resources/rebel.xml
+.project
+.drone.yml
+.classpath
+*.DEPLOYED
+/target/
+.settings
+bin/**/*
+**/bin/
+.settings/org.eclipse.wst.common.component
+**/target/

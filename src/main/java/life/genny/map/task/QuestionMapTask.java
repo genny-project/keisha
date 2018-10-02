@@ -15,7 +15,7 @@ public class QuestionMapTask extends EntityMapTask<String,Question>{
     return getMap().put(value.getCode(), value);
   }
   
-  public Question fetchQuestionById(Long id) {
-    return getByKey(id);
+  public Question fetchQuestionById() {
+    return null;
   }
 }

@@ -1,4 +1,4 @@
-package life.genny.map.implementation;
+package life.genny.map.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import com.hazelcast.core.MapStore;
+import life.genny.map.utils.HibernateUtil;
+import life.genny.map.utils.QueryIterable;
 import life.genny.qwanda.Answer;
 
 public abstract class EntityMap<K, T> implements MapStore<K, T>, ImplementByType<T> {

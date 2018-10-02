@@ -1,4 +1,4 @@
-package life.genny.map.implementation;
+package life.genny.map.utils;
 
 import java.util.Optional;
 import java.util.Properties;

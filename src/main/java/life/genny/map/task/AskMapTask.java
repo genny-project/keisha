@@ -3,7 +3,8 @@ package life.genny.map.task;
 import java.util.Collections;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.SqlPredicate;
-import life.genny.map.configuration.HazelcastServer;
+import life.genny.map.config.ApplicationServer;
+import life.genny.map.config.EntityMapRegister;
 import life.genny.qwanda.Ask;
 import life.genny.qwanda.Question;
 import life.genny.qwanda.entity.BaseEntity;
@@ -12,7 +13,7 @@ public class AskMapTask extends EntityMapTask<Long, Ask> {
 
 
   public AskMapTask() {
-    super(MapName.ASK);
+    super(EntityMapRegister.ASK);
   }
 
   @Override

@@ -1,12 +1,13 @@
 package life.genny.map.task;
 
+import life.genny.map.config.EntityMapRegister;
 import life.genny.qwanda.attribute.Attribute;
 
 public class AttributeMapTask extends EntityMapTask<String,Attribute> {
 
 
   public AttributeMapTask() {
-    super(MapName.ATTRIBUTE); 
+    super(EntityMapRegister.ATTRIBUTE); 
   }
 
   @Override

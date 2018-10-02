@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import javax.persistence.NoResultException;
 import org.apache.commons.lang3.StringUtils;
 import com.hazelcast.core.IMap;
+import life.genny.map.config.EntityMapRegister;
 import life.genny.qwanda.Answer;
 import life.genny.qwanda.Ask;
 import life.genny.qwanda.attribute.Attribute;
@@ -34,7 +35,7 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
 
 
   public AnswerMapTask() {
-    super(MapName.ANSWER);
+    super(EntityMapRegister.ANSWER);
   }
   
   public IMap<Long, Answer> getAnswerMap() {

@@ -1,4 +1,4 @@
-package life.genny.map.implementation;
+package life.genny.map.impl;
 
 import java.util.HashMap;
 import java.util.Map;

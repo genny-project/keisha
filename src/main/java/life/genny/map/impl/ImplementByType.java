@@ -1,4 +1,4 @@
-package life.genny.map.implementation;
+package life.genny.map.impl;
 
 import java.util.Map;
 import java.util.function.BiFunction;

@@ -1,9 +1,11 @@
 package life.genny.map.task;
 
 import com.hazelcast.client.HazelcastClient;
+import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import life.genny.map.config.EntityMapRegister;
+import life.genny.qwandautils.GennySettings;
 
 public abstract class EntityMapTask<K, V> {
 
@@ -17,15 +19,22 @@ public abstract class EntityMapTask<K, V> {
   public V getByKey(K key) {
     return getMap().get(key);
   }
-  
-  public abstract V create(V value) ;
-  
+
+  public abstract V create(V value);
+
   public EntityMapTask(EntityMapRegister name) {
     setMap(name);
   }
+  
+  
+  public final static HazelcastInstance newHazelcastClient;
 
-  HazelcastInstance newHazelcastClient = HazelcastClient.newHazelcastClient();
-
+  static{
+    ClientConfig config = new ClientConfig();
+    config.getGroupConfig().setName(GennySettings.username);
+    config.getGroupConfig().setPassword(GennySettings.username);
+    newHazelcastClient = HazelcastClient.newHazelcastClient(config);
+  }
 
   protected IMap<K, V> setMap(EntityMapRegister name) {
     switch (name) {
@@ -53,9 +62,8 @@ public abstract class EntityMapTask<K, V> {
     return map;
   }
 
-  
- 
-  
+
+
   // public static void main(String[] args) {
   // Config config = new Config();
   // HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);

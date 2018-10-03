@@ -89,7 +89,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-	<!-- 		<plugin>
+	 		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>2.3</version>
@@ -110,7 +110,7 @@
 								</transformer>
 							</transformers>
 							<artifactSet />
-							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+							<outputFile>${project.build.directory}/${project.artifactId}-fat.jar</outputFile>
 							<filters>
 								<filter>
 									<artifact>*:*</artifact>
@@ -124,7 +124,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin> 
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
 				<version>1.2.1</version> </plugin> -->
 		</plugins>

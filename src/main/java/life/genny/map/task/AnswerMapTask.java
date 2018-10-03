@@ -3,27 +3,11 @@ package life.genny.map.task;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
-import javax.persistence.NoResultException;
-import org.apache.commons.lang3.StringUtils;
 import com.hazelcast.core.IMap;
 import life.genny.map.config.EntityMapRegister;
 import life.genny.qwanda.Answer;
-import life.genny.qwanda.Ask;
 import life.genny.qwanda.attribute.Attribute;
-import life.genny.qwanda.attribute.AttributeBoolean;
-import life.genny.qwanda.attribute.AttributeDate;
-import life.genny.qwanda.attribute.AttributeDateTime;
-import life.genny.qwanda.attribute.AttributeDouble;
-import life.genny.qwanda.attribute.AttributeInteger;
-import life.genny.qwanda.attribute.AttributeLong;
-import life.genny.qwanda.attribute.AttributeMoney;
-import life.genny.qwanda.attribute.AttributeText;
-import life.genny.qwanda.attribute.AttributeTime;
-import life.genny.qwanda.exception.BadDataException;
 import life.genny.qwanda.message.QDataAnswerMessage;
 
 

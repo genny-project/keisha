@@ -2,6 +2,7 @@ package life.genny.map.impl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import life.genny.qwanda.Ask;
 
@@ -10,10 +11,8 @@ public class AskMap extends EntityMap<Long, Ask> {
   private final static String query = "select id from Ask";
   private final static String ATTRIBUTE_NAME = "id";
 
-
   {
     super.putOnMapByTypeFunction = putOnMapByType();
-    super.cloneFieldIdFunction = cloneFieldId();
   }
 
   public AskMap() {
@@ -28,4 +27,6 @@ public class AskMap extends EntityMap<Long, Ask> {
       }
     };
   }
+
+
 }

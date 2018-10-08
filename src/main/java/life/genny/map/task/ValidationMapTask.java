@@ -1,13 +1,19 @@
 package life.genny.map.task;
 
-import life.genny.map.config.EntityMapRegister;
+import java.util.Comparator;
+import java.util.Map.Entry;
+import life.genny.map.conscript.Registration;
 import life.genny.qwanda.validation.Validation;
 
 public class ValidationMapTask extends EntityMapTask<String,Validation>{
 
+
+  {
+    super.descendingComparator = descendingComparator();
+  }
   
   public ValidationMapTask() {
-    super(EntityMapRegister.VALIDATION);
+    super(Registration.VALIDATION);
     // TODO Auto-generated constructor stub
   }
 
@@ -16,4 +22,11 @@ public class ValidationMapTask extends EntityMapTask<String,Validation>{
     // TODO Auto-generated method stub
     return null;
   }
+
+  @Override
+  protected Comparator<Entry> descendingComparator() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }

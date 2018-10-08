@@ -2,12 +2,16 @@ package life.genny.map.task;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.stream.Stream;
 import com.hazelcast.core.IMap;
-import life.genny.map.config.EntityMapRegister;
+import life.genny.map.conscript.Registration;
 import life.genny.qwanda.Answer;
 import life.genny.qwanda.attribute.Attribute;
+import life.genny.qwanda.entity.BaseEntity;
 import life.genny.qwanda.message.QDataAnswerMessage;
 
 
@@ -17,9 +21,13 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
 
   private final String PREFIX_PRI_IS = "PRI_IS_";
 
+  {
+    super.descendingComparator = descendingComparator();
+  }
+
 
   public AnswerMapTask() {
-    super(EntityMapRegister.ANSWER);
+    super(Registration.ANSWER);
   }
   
   public IMap<Long, Answer> getAnswerMap() {
@@ -32,6 +40,9 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
         .findFirst().get() + 1;
   }
   
+  public Answer fetchAnswerById(final Long id ) {
+    return fetchById(id);
+  }
 
   @Override
   public Answer create(Answer value) {
@@ -77,6 +88,20 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
         answer.setAttribute(attr);
       }
     });
+  }
+
+
+  @Override
+  protected Comparator<Entry> descendingComparator() {
+    // TODO Auto-generated method stub
+    return new Comparator<Map.Entry>() {
+      @Override
+      public int compare(Map.Entry e1, Map.Entry e2) {
+        BaseEntity s1 = (BaseEntity) e1.getValue();
+        BaseEntity s2 = (BaseEntity) e2.getValue();
+        return s2.getId().intValue() - s1.getId().intValue();
+      }
+    };
   }
 
 

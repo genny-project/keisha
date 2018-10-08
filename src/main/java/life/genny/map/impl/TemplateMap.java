@@ -12,8 +12,8 @@ public class TemplateMap extends EntityMap<String, QBaseMSGMessageTemplate> {
   private final static String ATTRIBUTE_NAME = "code";
 
   {
-    super.putOnMapByTypeFunction = putOnMapByType();
-    super.cloneFieldIdFunction = cloneFieldId();
+    putOnMapByTypeFunction = putOnMapByType();
+    cloneFieldIdFunction = cloneFieldId();
   }
 
   public TemplateMap() {

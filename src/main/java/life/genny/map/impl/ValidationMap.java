@@ -10,7 +10,7 @@ public class ValidationMap extends EntityMap<String, Validation> {
 
   private final static String query = "select code from Validation";
   private final static String ATTRIBUTE_NAME = "code";
-
+  
   {
     super.putOnMapByTypeFunction = putOnMapByType();
     super.cloneFieldIdFunction = cloneFieldId();

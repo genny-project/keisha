@@ -22,53 +22,84 @@ import com.hazelcast.core.MapStore;
 import life.genny.map.utils.HibernateUtil;
 import life.genny.map.utils.QueryIterable;
 import life.genny.qwanda.Answer;
+import life.genny.qwanda.Ask;
 
+/**
+ * 
+ * EntityMap is extended by other Serializable classes which are intended to be used for fetching
+ * from a data store and save them to a Map Hazelcast data structure.
+ * 
+ * @author helios
+ *
+ * @param <K>
+ * @param <T>
+ */
 public abstract class EntityMap<K, T> implements MapStore<K, T>, ImplementByType<T> {
-
-  private final String attributeName;
-  private final Query<?> allKeysQuery;
-
+  
   private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
   private Session session = sessionFactory.openSession();
 
+  /**
+   * field name of Serializable class
+   */
+  private final String fieldName;
+
+  /**
+   * Query to fetch all keys
+   */
+  private final Query<?> allKeysQuery;
+
+  /**
+   * Class 
+   */
   private final Class<T> entityClass;
 
   public Class<T> getEntityClass() {
     return entityClass;
   }
 
+  /**
+   * 
+   */
   protected Function<T, Map<K, T>> putOnMapByTypeFunction;
+
+  /**
+   * 
+   */
   protected BiFunction<T, T, T> cloneFieldIdFunction;
 
   protected EntityMap(Class<T> entity, String query, String attributeName) {
     this.entityClass = entity;
     this.allKeysQuery = session.createQuery(query);
-    this.attributeName = attributeName;
+    this.fieldName = attributeName;
   }
 
+  /**
+   * @param keys
+   * @return
+   */
   private final <T> List<T> loadAllFromType(Collection<K> keys) {
     Query<T> query = (Query<T>) getQueryByParameterType(Collection.class, keys);
     return query.getResultList();
   }
 
-  private final <K> Query<T> getQueryByParameterType(Class<K> class1, K key) {
+  /**
+   * @param kClassParam
+   * @param key
+   * @return
+   */
+  private final <K> Query<T> getQueryByParameterType(Class<K> kClassParam, K key) {
     Class<String> st = String.class;
     CriteriaBuilder builder = session.getCriteriaBuilder();
     CriteriaQuery<T> criteriaQuery = builder.createQuery(entityClass);
     Root<T> root = criteriaQuery.from(entityClass);
-    ParameterExpression<K> parameterExpression = builder.parameter(class1);
-    criteriaQuery.where(root.get(attributeName).in(parameterExpression));
+    ParameterExpression<K> parameterExpression = builder.parameter(kClassParam);
+    criteriaQuery.where(root.get(fieldName).in(parameterExpression));
     Query<T> query = session.createQuery(criteriaQuery);
     Query<T> parameter = query.setParameter(parameterExpression, key);
     return parameter;
   }
 
-  @Override
-  public BiFunction<T, T, T> cloneFieldId() {
-    return (answ1, NULL) -> {
-      return answ1;
-    };
-  }
 
   @Override
   public T load(K key) {
@@ -130,5 +161,12 @@ public abstract class EntityMap<K, T> implements MapStore<K, T>, ImplementByType
     Consumer<K> getObjectAndDelete = (key) -> delete(key);
     keys.stream().forEach(getObjectAndDelete);
   }
+  
+  @Override
+  public BiFunction<T, T, T> cloneFieldId() {
+    return (ask1, NULL) -> {
+      return ask1;
+    };
+  };
 
 }

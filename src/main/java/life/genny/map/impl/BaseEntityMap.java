@@ -11,9 +11,10 @@ public class BaseEntityMap extends EntityMap<String, BaseEntity> {
   private final static String query = "select code from BaseEntity";
   private final static String ATTRIBUTE_NAME = "code";
 
+  
   {
-    super.putOnMapByTypeFunction = putOnMapByType();
-    super.cloneFieldIdFunction = cloneFieldId();
+    putOnMapByTypeFunction = putOnMapByType();
+    cloneFieldIdFunction = cloneFieldId();
   }
 
 

@@ -1,12 +1,19 @@
 package life.genny.map.task;
 
-import life.genny.map.config.EntityMapRegister;
+import java.util.Comparator;
+import java.util.Map.Entry;
+import life.genny.map.conscript.Registration;
 import life.genny.qwanda.message.QBaseMSGMessageTemplate;
 
 public class TemplateMapTask extends EntityMapTask<String,QBaseMSGMessageTemplate>{
 
+
+  {
+    super.descendingComparator = descendingComparator();
+  }
+  
   public TemplateMapTask() {
-    super(EntityMapRegister.QBASEMSGMESSAGETEMPLATE);
+    super(Registration.QBASEMSGMESSAGETEMPLATE);
   }
 
   @Override
@@ -14,4 +21,12 @@ public class TemplateMapTask extends EntityMapTask<String,QBaseMSGMessageTemplat
     // TODO Auto-generated method stub
     return null;
   }
+
+  @Override
+  protected Comparator<Entry> descendingComparator() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+
 }

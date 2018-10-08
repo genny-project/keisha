@@ -1,19 +1,26 @@
 package life.genny.map.task;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map.Entry;
 import com.hazelcast.query.EntryObject;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.PredicateBuilder;
-import life.genny.map.config.EntityMapRegister;
+import life.genny.map.conscript.Registration;
 import life.genny.qwanda.Question;
 
 public class QuestionMapTask extends EntityMapTask<String, Question> {
 
 
+  {
+    super.descendingComparator = descendingComparator();
+  }
+
   public QuestionMapTask() {
-    super(EntityMapRegister.QUESTION);
+    super(Registration.QUESTION);
   }
 
   @Override
@@ -24,14 +31,18 @@ public class QuestionMapTask extends EntityMapTask<String, Question> {
   public Question fetchQuestionById(Long id) {
     return fetchById(id);
   }
-
-  private Question fetchById(Long id) {
-    EntryObject e = new PredicateBuilder().getEntryObject();
-    Predicate predicate = e.get("id").equal(id);
-    Collection<Question> question = getMap().values(predicate);
-    return question.stream().findFirst().get();
-    // return null;
+  
+  public List<Question> fetchQuestions() {
+    return new ArrayList(getMap().values());
+    
   }
+
+  @Override
+  protected Comparator<Entry> descendingComparator() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }
 
 // public static void main(String... bM) {

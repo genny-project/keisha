@@ -21,10 +21,6 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
 
   private final String PREFIX_PRI_IS = "PRI_IS_";
 
-  {
-    super.descendingComparator = descendingComparator();
-  }
-
 
   public AnswerMapTask() {
     super(Registration.ANSWER);
@@ -89,21 +85,6 @@ public class AnswerMapTask extends EntityMapTask<Long, Answer> {
       }
     });
   }
-
-
-  @Override
-  protected Comparator<Entry> descendingComparator() {
-    // TODO Auto-generated method stub
-    return new Comparator<Map.Entry>() {
-      @Override
-      public int compare(Map.Entry e1, Map.Entry e2) {
-        BaseEntity s1 = (BaseEntity) e1.getValue();
-        BaseEntity s2 = (BaseEntity) e2.getValue();
-        return s2.getId().intValue() - s1.getId().intValue();
-      }
-    };
-  }
-
 
 
 }

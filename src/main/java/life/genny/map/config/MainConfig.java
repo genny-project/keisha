@@ -39,7 +39,7 @@ public class MainConfig {
     MapStoreLoader loader = new MapStoreLoader(config);
     loader.loadAll();
     Config contextConfig = loader.getContextConfig();
-    return config;
+    return contextConfig;
   }
 
 }

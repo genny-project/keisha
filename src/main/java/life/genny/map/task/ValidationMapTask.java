@@ -7,10 +7,6 @@ import life.genny.qwanda.validation.Validation;
 
 public class ValidationMapTask extends EntityMapTask<String,Validation>{
 
-
-  {
-    super.descendingComparator = descendingComparator();
-  }
   
   public ValidationMapTask() {
     super(Registration.VALIDATION);
@@ -19,12 +15,6 @@ public class ValidationMapTask extends EntityMapTask<String,Validation>{
 
   @Override
   public Validation create(Validation value) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected Comparator<Entry> descendingComparator() {
     // TODO Auto-generated method stub
     return null;
   }

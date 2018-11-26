@@ -10,10 +10,7 @@ import life.genny.qwanda.message.QDataAttributeMessage;
 
 public class AttributeMapTask extends EntityMapTask<String, Attribute> {
 
-  {
-    super.descendingComparator = descendingComparator();
-  }
-
+  
   public AttributeMapTask() {
     super(Registration.ATTRIBUTE);
   }
@@ -23,7 +20,6 @@ public class AttributeMapTask extends EntityMapTask<String, Attribute> {
     return getMap().put(value.getCode(), value);
 
   }
-
 
   public QDataAttributeMessage fetchAttributes() {
     final List<Attribute> entitys = new ArrayList(getMap().values());
@@ -48,10 +44,5 @@ public class AttributeMapTask extends EntityMapTask<String, Attribute> {
 
   }
 
-  @Override
-  protected Comparator<Entry> descendingComparator() {
-    // TODO Auto-generated method stub
-    return null;
-  }
 
 }

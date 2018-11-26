@@ -14,10 +14,8 @@ import life.genny.qwanda.Question;
 
 public class QuestionMapTask extends EntityMapTask<String, Question> {
 
+  final String userRealmStr = null;
 
-  {
-    super.descendingComparator = descendingComparator();
-  }
 
   public QuestionMapTask() {
     super(Registration.QUESTION);
@@ -31,16 +29,18 @@ public class QuestionMapTask extends EntityMapTask<String, Question> {
   public Question fetchQuestionById(Long id) {
     return fetchById(id);
   }
-  
+
   public List<Question> fetchQuestions() {
     return new ArrayList(getMap().values());
-    
+
   }
 
-  @Override
-  protected Comparator<Entry> descendingComparator() {
-    // TODO Auto-generated method stub
-    return null;
+
+  protected Question findQuestionByCode(String code, String realm) {
+    EntryObject e = new PredicateBuilder().getEntryObject();
+    Predicate equalCode = e.get("code").equal(code).and(e.get("realm").equal(realm));
+    Collection<Question> entity = getMap().values(equalCode);
+    return entity.stream().findFirst().get();
   }
 
 }

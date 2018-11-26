@@ -14,23 +14,24 @@ public class HibernateUtil {
     private static final String FULL_MYSQL_URL;
     private static final String MYSQL_USER;
     private static final String MYSQL_PASSWORD;
-    
+
     static {
-      
-      Optional<String> fullMysqlUrl =  Optional.ofNullable(System.getenv("FULL_MYSQL_URL"));
-      Optional<String> mysqlUser =  Optional.ofNullable(System.getenv("MYSQL_USER"));
-      Optional<String> mysqlPassword =  Optional.ofNullable(System.getenv("MYSQL_PASSWORD"));
-      
-      FULL_MYSQL_URL = fullMysqlUrl.orElse("jdbc:mysql://localhost:3310/gennydb");
-      MYSQL_USER = mysqlUser.orElse("genny");
-      MYSQL_PASSWORD = mysqlPassword.orElse("password");
-      
-      Configuration configuration = new Configuration();
-      configuration.setProperty("hibernate.connection.url", FULL_MYSQL_URL);
-      configuration.setProperty("hibernate.connection.username", MYSQL_USER);
-      configuration.setProperty("hibernate.connection.password", MYSQL_PASSWORD);
-      
-      SESSION_FACTORY = configuration.configure().buildSessionFactory();
+
+        Optional<String> fullMysqlUrl =  Optional.ofNullable(System.getenv("FULL_MYSQL_URL"));
+        Optional<String> mysqlUser =  Optional.ofNullable(System.getenv("MYSQL_USER"));
+        Optional<String> mysqlPassword =  Optional.ofNullable(System.getenv("MYSQL_PASSWORD"));
+
+        FULL_MYSQL_URL = fullMysqlUrl.orElse("jdbc:mysql://localhost:3310/gennydb");
+        MYSQL_USER = mysqlUser.orElse("genny");
+        MYSQL_PASSWORD = mysqlPassword.orElse("password");
+
+        Configuration configuration = new Configuration();
+        configuration.setProperty("hibernate.connection.url", FULL_MYSQL_URL);
+        configuration.setProperty("hibernate.connection.username", MYSQL_USER);
+        configuration.setProperty("hibernate.connection.password", MYSQL_PASSWORD);
+        configuration.setProperty("hibernate.hbm2ddl.auto", "update");
+
+        SESSION_FACTORY = configuration.configure().buildSessionFactory();
 
     }
     private HibernateUtil() {

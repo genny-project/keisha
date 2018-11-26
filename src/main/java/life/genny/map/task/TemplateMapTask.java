@@ -8,9 +8,6 @@ import life.genny.qwanda.message.QBaseMSGMessageTemplate;
 public class TemplateMapTask extends EntityMapTask<String,QBaseMSGMessageTemplate>{
 
 
-  {
-    super.descendingComparator = descendingComparator();
-  }
   
   public TemplateMapTask() {
     super(Registration.QBASEMSGMESSAGETEMPLATE);
@@ -18,12 +15,6 @@ public class TemplateMapTask extends EntityMapTask<String,QBaseMSGMessageTemplat
 
   @Override
   public QBaseMSGMessageTemplate create(QBaseMSGMessageTemplate value) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected Comparator<Entry> descendingComparator() {
     // TODO Auto-generated method stub
     return null;
   }

@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>life.genny</groupId>
     <artifactId>keisha</artifactId>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
     <name>keisha</name>
 
     <properties>
         <genny-verticle.version>1.0.56</genny-verticle.version>
         <hazelcast.version>3.8.2</hazelcast.version>
         <vertx.version>3.5.1</vertx.version>
-        <qwanda-utils.version>2.0.3</qwanda-utils.version>
+        <qwanda-utils.version>2.0.6</qwanda-utils.version>
 
     </properties>
 
